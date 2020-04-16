@@ -7,3 +7,4 @@ vcap-local.js
 credentials.json
 localdev-config.json
 .nyc*
+*.swp*
