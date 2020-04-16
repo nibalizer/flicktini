@@ -8,7 +8,7 @@ const swaggerRoutes = require('./routes/swagger-route');
 
 const app = express();
 
-let temp_state = { round: 0 };
+let temp_state = { round: {phase: 0} };
 
 // enable parsing of http request body
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -38,6 +38,10 @@ function parsePhase(state, prevState) {
   }
 }
 
+function checkFourKill(state){
+  console.log("kills this round: " + state.player.state.round_kills);
+}
+
 app.post('/', (req, res) => {
   let state = req.body;
   if (process.env.DEBUG) {
@@ -45,6 +49,7 @@ app.post('/', (req, res) => {
   }
   if (parsePhase(state, temp_state)) {
     console.log('New Round');
+    checkFourKill(state);
   }
 
   temp_state = state;
