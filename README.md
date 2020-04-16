@@ -51,3 +51,70 @@ Docs on where this file goes are [here](https://github.com/nibalizer/csgo_docume
 npm install
 npm start
 ```
+
+
+## Example csgo payload
+
+
+```
+{
+  provider: {
+    name: 'Counter-Strike: Global Offensive',
+    appid: 730,
+    version: 13747,
+    steamid: '<readcated>',
+    timestamp: 1580000032
+  },
+  map: {
+    mode: 'casual',
+    name: 'de_cache',
+    phase: 'live',
+    round: 5,
+    team_ct: {
+      score: 4,
+      consecutive_round_losses: 0,
+      timeouts_remaining: 1,
+      matches_won_this_series: 0
+    },
+    team_t: {
+      score: 1,
+      name: '[xirv]',
+      consecutive_round_losses: 2,
+      timeouts_remaining: 1,
+      matches_won_this_series: 0
+    },
+    num_matches_to_win_series: 0,
+    current_spectators: 0,
+    souvenirs_total: 0
+  },
+  round: { phase: 'live' },
+  player: {
+    steamid: '<redacted>',
+    clan: '[xirv]',
+    name: 'CSGO Player 3',
+    observer_slot: 6,
+    team: 'T',
+    activity: 'playing',
+    state: {
+      health: 100,
+      armor: 100,
+      helmet: true,
+      flashed: 0,
+      smoked: 0,
+      burning: 0,
+      money: 7300,
+      round_kills: 0,
+      round_killhs: 0,
+      equip_value: 3900
+    },
+    weapons: {
+      weapon_0: [Object],
+      weapon_1: [Object],
+      weapon_2: [Object],
+      weapon_3: [Object]
+    },
+    match_stats: { kills: 7, assists: 0, deaths: 4, mvps: 1, score: 18 }
+  },
+  auth: { token: 'REDACTED' }
+}
+```
