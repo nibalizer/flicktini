@@ -74,6 +74,15 @@ function checkFourKill(){
   }
 }
 
+function performAllChecks(){
+  checkFourKill()
+}
+function performAllUpdates(state){
+
+  update_player_state(state);
+  update_round_state(state);
+}
+
 // what to do with a new game state payload
 app.post('/', (req, res) => {
   let state = req.body;
@@ -85,12 +94,12 @@ app.post('/', (req, res) => {
   if ('round' in state) { 
       if (parsePhase(state, temp_state)) {
         console.log('New Round');
-        checkFourKill();
+        performAllUpdates(state);
+        performAllChecks();
 
         clearstate();
       } else {
-        update_player_state(state);
-        update_round_state(state);
+        performAllUpdates(state);
       }
 
       temp_state = state;
