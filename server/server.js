@@ -66,11 +66,7 @@ function parsePhase(state, prevState) {
 }
 
 function checkFourKill(){
-//  console.log("kills this round: " + state.player.state.round_kills);
-
-  console.log(round_state.players)
   for (var player_id in round_state.players) {
-//    console.log("kills this round: " + round_state.players[i].state.round_kills);
     var kills = round_state.players[player_id].state.round_kills
     var name = round_state.players[player_id].name
     console.log("player: " + name + " kills: " + kills)
@@ -99,6 +95,11 @@ app.post('/', (req, res) => {
       temp_state = state;
   }
 });
+
+// serve up data
+app.get('/data.json', (req,res)  => {
+  res.send(round_state)
+})
 
 // default path to serve up index.html (single page application)
 app.all('', (req, res) => {
