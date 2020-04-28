@@ -49,7 +49,8 @@ function parsePhase(state, prevState) {
   let changed = false;
   if ('round' in state) {
     if (process.env.DEBUG) {
-      console.log('game state is: ' + state.round.phase);
+      console.log('round phase is: ' + state.round.phase);
+      console.log('map phase is: ' + state.map.phase);
     }
     if (prevState.round.phase !== state.round.phase) {
       changed = true;
