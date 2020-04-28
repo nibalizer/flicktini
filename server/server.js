@@ -70,12 +70,36 @@ function checkFourKill(){
   for (var player_id in round_state.players) {
     var kills = round_state.players[player_id].state.round_kills
     var name = round_state.players[player_id].name
-    console.log("player: " + name + " kills: " + kills)
+    if (kills >= 4) {
+      console.log("EVENT: player: " + name + " kills: " + kills)
+    }
+  }
+}
+
+function checkRoundStreaks(){
+  var team = "";
+  for (var player_id in round_state.players) {
+      team = round_state.players[player_id].team
+  }
+  var team_lookup;
+  if (team != "") {
+    team_lookup = (team == "CT") ? "team_ct" : "team_t"
+    opposing_team_lookup = (team != "CT") ? "team_ct" : "team_t"
+  }
+
+  var losses = round_state.map[team_lookup].consecutive_round_losses
+  var wins = round_state.map[opposing_team_lookup].consecutive_round_losses
+  if (wins >= 3) {
+    console.log("EVENT: team has won " + wins + " rounds in a row")
+  }
+  if (losses >= 3) {
+    console.log("EVENT: team has lost " + losses + " rounds in a row")
   }
 }
 
 function performAllChecks(){
-  checkFourKill()
+  checkFourKill();
+  checkRoundStreaks();
 }
 function performAllUpdates(state){
 
