@@ -104,6 +104,7 @@ app.post('/', (req, res) => {
 
       temp_state = state;
   }
+  res.send('ok');
 });
 
 // serve up data
