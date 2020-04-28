@@ -87,11 +87,10 @@ function performAllUpdates(state){
 app.post('/', (req, res) => {
   let state = req.body;
   if (process.env.DEBUG) {
-//    console.log(req.body);
     console.log(req.body.player.weapons);
     console.log(round_state.players);
   }
-  if ('round' in state) { 
+  if ('round' in state) {
       if (parsePhase(state, temp_state)) {
         console.log('New Round');
         performAllUpdates(state);
