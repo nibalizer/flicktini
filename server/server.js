@@ -224,7 +224,7 @@ const checkRoundStreaks = () => withVoice(async({play,say}) =>{
 let lastNices = new Set()
 const checkNice = () => withVoice(async({play,say}) =>{
   nices = new Set()
-  if ((round_state.map.team_ct.score === 6 && round_state.map.team_ct.score === 9) || (round_state.map.team_ct.score === 9 && round_state.map.team_ct.score === 6)) {
+  if ((round_state?.map?.team_ct?.score === 6 && round_state?.map?.team_ct?.score === 9) || (round_state?.map?.team_ct?.score === 9 && round_state?.map?.team_ct?.score === 6)) {
     nices.add(`the score is 6 9. nice.`)
   }
   for (const player of Object.values(round_state.players)) {
