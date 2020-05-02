@@ -196,7 +196,7 @@ const checkFourKill = () => withVoice(async({play,say}) =>{
   }
 })
 
-function checkRoundStreaks(){
+const checkRoundStreaks = () => withVoice(async({play,say}) =>{
   var team = "";
   for (var player_id in round_state.players) {
       team = round_state.players[player_id].team
@@ -215,11 +215,11 @@ function checkRoundStreaks(){
     await say(ev)
   }
   if (losses >= 3) {
-    var ev = "DRINK: team has lost " + losses + " rounds in a row")
+    var ev = "DRINK: team has lost " + losses + " rounds in a row"
     console.log(ev)
     await say(ev)
   }
-}
+})
 
 function performAllChecks(){
   checkFourKill();
