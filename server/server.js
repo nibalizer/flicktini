@@ -271,11 +271,11 @@ const checkBlazes = () => withVoice(async({play,say}) =>{
   lastBlazes = blazes
 })
 
-function performAllChecks(){
-  checkFourKill();
-//  checkRoundStreaks();
-  checkNice()
-  checkBlazes()
+async function performAllChecks(){
+  await checkFourKill();
+  await checkRoundStreaks();
+  await checkNice()
+  await checkBlazes()
 }
 function performAllUpdates(state){
 
