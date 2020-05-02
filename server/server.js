@@ -273,7 +273,7 @@ const checkBlazes = () => withVoice(async({play,say}) =>{
 
 function performAllChecks(){
   checkFourKill();
-  checkRoundStreaks();
+//  checkRoundStreaks();
   checkNice()
   checkBlazes()
 }
