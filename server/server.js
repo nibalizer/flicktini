@@ -221,9 +221,61 @@ const checkRoundStreaks = () => withVoice(async({play,say}) =>{
   }
 })
 
+let lastNices = new Set()
+const checkNice = () => withVoice(async({play,say}) =>{
+  nices = new Set()
+  if ((round_state.map.team_ct.score === 6 && round_state.map.team_ct.score === 9) || (round_state.map.team_ct.score === 9 && round_state.map.team_ct.score === 6)) {
+    nices.add(`the score is 6 9. nice.`)
+  }
+  for (const player of Object.values(round_state.players)) {
+    if (player.state.round_kills === 69) {
+      nices.add(`${player.name} has 69 kills. nice.`)
+    }
+    if (player.state.health === 69) {
+      nices.add(`${player.name} has 69 health. nice.`)
+    }
+    if (player.state.armor === 69) {
+      nices.add(`${player.name} has 69 armor. nice.`)
+    }
+    if (player.state.money === 6900) {
+      nices.add(`${player.name} has 6900 dollars. nice.`)
+    }
+    if (player.match_stats.score === 69) {
+      nices.add(`${player.name} has 69 points. nice.`)
+    }
+  }
+  for (const msg of nices) {
+    if (!lastNices.has(msg)) {
+        await say(msg)
+    }
+  }
+  lastNices = nices
+})
+
+let lastBlazes = new Set()
+const checkBlazes = () => withVoice(async({play,say}) =>{
+  blazes = new Set()
+  for (const player of Object.values(round_state.players)) {
+    if (player.state.smoked) {
+      blazes.add(`${player.name} is blazing it.`)
+    }
+    if (player.state.burning) {
+      blazes.add(`${player.name} is burning it.`)
+    }
+  }
+  for (const msg of blazes) {
+    if (!lastBlazes.has(msg)) {
+        await say(msg)
+    }
+  }
+  lastBlazes = blazes
+})
+
 function performAllChecks(){
   checkFourKill();
   checkRoundStreaks();
+  checkNice()
+  checkBlazes()
 }
 function performAllUpdates(state){
 
