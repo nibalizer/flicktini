@@ -106,8 +106,7 @@ const trekQuestion = () => withVoice(async ({play, say}) => {
   await play('incoming_hail3.mp3')
   await play('speech.ogg')
   await console.log("sup")
-  //await say('foo');
-  
+
   await say(`
     it\'s time to answer a star trek question.
     ${q}
@@ -115,7 +114,7 @@ const trekQuestion = () => withVoice(async ({play, say}) => {
     again, ${q}
     is the answer... ${as[0].t}, ${as[1].t}, ${as[2].t}, or ${as[3].t}?
   `)
-  
+
   await play('scrsearch.mp3')
   await say('time\'s up! the answer is: ' + as.find(a => a.c).t)
   await play('processing3.mp3')
@@ -189,8 +188,8 @@ const checkFourKill = () => withVoice(async({play,say}) =>{
   for (var player_id in round_state.players) {
     var kills = round_state.players[player_id].state.round_kills
     var name = round_state.players[player_id].name
-    if (kills >= 1) {
-      var ev = "EVENT: player: " + name + " kills: " + kills
+    if (kills >= 3) {
+      var ev = "DRINK: player: " + name + " kills: " + kills
       console.log(ev)
       await say(ev)
     }
@@ -211,10 +210,14 @@ function checkRoundStreaks(){
   var losses = round_state.map[team_lookup].consecutive_round_losses
   var wins = round_state.map[opposing_team_lookup].consecutive_round_losses
   if (wins >= 3) {
-    console.log("EVENT: team has won " + wins + " rounds in a row")
+    var ev = "DRINK: team has won " + wins + " rounds in a row"
+    console.log(ev)
+    await say(ev)
   }
   if (losses >= 3) {
-    console.log("EVENT: team has lost " + losses + " rounds in a row")
+    var ev = "DRINK: team has lost " + losses + " rounds in a row")
+    console.log(ev)
+    await say(ev)
   }
 }
 

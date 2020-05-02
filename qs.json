@@ -2,9 +2,10 @@
   {
     "q": "Who was the captain of the USS Enterprise ncc-1701-d",
     "as": [
-        "kirk",
-        "janeway",
-        "picard",
-        "riker"]
+      {"t" : "kirk"},
+      {"t" :  "janeway"},
+      {"t" :  "picard"},
+      {"t" :   "riker"}
+    ]
   }
 ]
